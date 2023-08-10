@@ -1,0 +1,35 @@
+const express = require('express');
+@endpoint = http://localhost:3000/
+
+
+GET {{endpoint}}quiz
+
+### route 
+GET {{endpoint}}quiz/1
+
+### autre route
+
+POST  {{endpoint}}login
+content-type: application/json
+
+{
+    "email" : "chuck1@oclock.io",
+  "password": "12345"
+}
+
+### route
+
+PATCH {{endpoint}}pseudo
+content-type: application/json
+
+{
+    "pseudo": "Tyrania4",
+    "userId": 14
+}
+
+
+
+
+
+
+

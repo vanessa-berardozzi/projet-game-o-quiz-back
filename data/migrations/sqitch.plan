@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=quizotron
+
+initial-DB 2023-05-22T15:43:37Z Ness <berardozzi.vanessa@live.fr> # structure DB
+initial-seeding 2023-05-22T16:10:32Z Ness <berardozzi.vanessa@live.fr> # seeding DB
+user-Update 2023-05-23T13:46:29Z Ness <berardozzi.vanessa@live.fr> # Add table Role and role_is +  pseudo column in user table
