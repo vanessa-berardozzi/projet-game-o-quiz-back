@@ -2,7 +2,7 @@
 
 ## Description du projet ##
 
-Ce projet est le back-end du projet Game'O'Quiz. Il est réalisé avec Node.js et Express.js. Il utilise une base de données PostgreSQL , un ORM Sequelize et Sqitch pour la gestion des migrations de la base de données.
+Voici l'API du projet Game'O'Quiz. Elle est réalisée avec Node.js et Express.js,  utilise une base de données PostgreSQL , un ORM Sequelize et Sqitch pour la gestion des migrations de la base de données.
 
 ## Installation ##
 
