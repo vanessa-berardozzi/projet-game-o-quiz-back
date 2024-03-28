@@ -9,7 +9,10 @@ const session = require('express-session');
 
 // Configuration du serveur Web
 const app = express();
-const PORT = process.env.PORT || 4000;
+let PORT = process.env.PORT;
+if (PORT == null || PORT == "") PORT = 8000;
+
+
 const server = http.createServer(app); //
 
 //GESTION DES CORS
