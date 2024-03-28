@@ -5,6 +5,12 @@ require('dotenv').config();
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   // on precise que sequelize doit se connecter à un PostgreSQL
   dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
   define: {
     underscored: true,
     updatedAt: 'updated_at',
