@@ -1,4 +1,4 @@
-** User-stories du projet Game'O'Quiz :**
+# User-stories du projet Game'O'Quiz
 
 Visiteur: Non connecté
 Utilisateur : visiteur connecté

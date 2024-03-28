@@ -1,5 +1,5 @@
 {
-  "name": "projet-game-o-quiz-back",
+  "name": "projet-09-quiz-o-tron-back",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,20 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back"
+    "url": "git+https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back/issues"
+    "url": "https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back/issues"
   },
-  "homepage": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back#readme",
+  "homepage": "https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-jsdoc-swagger": "^1.8.0",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
