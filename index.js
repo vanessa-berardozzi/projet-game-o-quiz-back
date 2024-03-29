@@ -16,21 +16,20 @@ if (PORT == null || PORT == "") PORT = 8000;
 const server = http.createServer(app); //
 
 //GESTION DES CORS
-app.use(cors({ origin: 'http://localhost:5173' }));
-
+app.use(cors());
 
 // Configuration de la session
 app.use(session({
   secret: 'secretCode',
   resave: true,
   saveUninitialized: true,
-  cookie: { //secure: true,
+  cookie: {
     httpOnly: true
   }
 }));
 
 // Configuration du body parser
-app.use(express.json()) 
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
 
