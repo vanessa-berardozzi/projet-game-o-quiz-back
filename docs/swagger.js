@@ -9,7 +9,7 @@ const options = {
     info: {
       title: 'Quiz\'O\'Tron API',
       version: '1.0.0',
-      description: 'A simple Express Quiz API',
+      description: 'A Express Quiz API',
     },
     servers: [
       {
@@ -17,7 +17,7 @@ const options = {
       },
     ],
   },
-  apis: ['./app/controllers/*.js'],
+  apis: ['./app/routers/*.js', './app/models/*.js', './app/controllers/*.js']
 };
 
 const swaggerSpecs = swaggerJsDoc(options);
