@@ -13,11 +13,3 @@ quiz: (id, title, picture, #level(id), #tag(id))
 answer: (id, description, isValid,  #question(id))
 
 play_quiz : (user(id), quiz(id), points, date)
-
-
-Role d'un MLD dans une base de donneés :
-
-
-- Il permet de définir les tables et les relations entre les tables
-  - Les tables sont les entités
-  - Les relations sont les liens entre les entités

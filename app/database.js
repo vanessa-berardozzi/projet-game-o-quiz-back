@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-// On instancie un objet de la classe sequelize
+// We create a new instance of Sequelize
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  // on precise que sequelize doit se connecter à un PostgreSQL
+  // We specify that we use the postgres dialect
   dialect: 'postgres',
   dialectOptions: {
     ssl: {
@@ -18,5 +18,5 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   },
 });
 
-// Export de l'objet sequelize
+// We export the instance
 module.exports = sequelize;

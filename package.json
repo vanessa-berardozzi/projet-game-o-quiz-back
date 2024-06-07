@@ -1,42 +1,41 @@
 {
-	"name": "projet-game-o-quiz-back",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"directories": {
-		"doc": "docs"
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back"
-	},
-	"keywords": [],
-	"author": "Vanessa Berardozzi",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back/issues"
-	},
-	"engines": {
-		"node": "20.x"
-	},
-	"homepage": "https://github.com/vanessa-berardozzi/projet-game-o-quiz-back#readme",
-	"dependencies": {
-		"bcrypt": "^5.1.0",
-		"cors": "^2.8.5",
-		"dotenv": "^16.0.3",
-		"express": "^4.18.2",
-		"express-session": "^1.17.3",
-		"jsonwebtoken": "^9.0.0",
-		"pg": "^8.10.0",
-		"sequelize": "^6.31.1"
-	},
-	"devDependencies": {
-		"eslint": "^8.39.0",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-plugin-import": "^2.27.5"
-	}
+  "name": "projet-09-quiz-o-tron-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back/issues"
+  },
+  "homepage": "https://github.com/O-clock-Quasar/projet-09-quiz-o-tron-back#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "sequelize": "^6.31.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
 }

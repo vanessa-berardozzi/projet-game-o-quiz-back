@@ -4,19 +4,17 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const security = require('../services/security');
 
-
 const authController = {
-
   signUp: async (req, res) => {
     try {
 
-      // Dans un premier temps on controles les données saisies par l'utilisateur:
+      // First, we validate the data entered by the user:
 
       let validForm = true;
 
       let formError = [];
       const { email, password, passwordConfirm, first_name, last_name, pseudo } = req.body;
-      // On vérifie que tous les champs sont remplis:
+      // We check that all fields are filled:
 
       if (
         validator.isEmpty(email) ||
@@ -28,29 +26,29 @@ const authController = {
 
       ) {
         validForm = false;
-        formError.push('Tous les champs sont obligatoires.')
+        formError.push('All fields are required.')
       }
 
-      // On vérifie que l'email est valide:
+      // We also check that the email is valid:
 
       if (!validator.isEmail(email)) {
         validForm = false;
-        formError.push(`L'email n'est pas valide.`)
+        formError.push('The email is not valid.')
       };
 
-      // On vérifie aussi qu'il y a une correspondance entre le champ password et PasswordConfirm
+      // We also check that there is a match between the password and PasswordConfirm fields
       if (password !== passwordConfirm) {
         validForm = false;
-        formError.push('Les mots de passe ne sont pas identiques.');
+        formError.push('The passwords do not match.');
       }
 
-      //Si le formulaire ne répond pas aux conditions de validation, on renvoie une erreur:
+      // If the form does not meet the validation conditions, we return an error:
       if (!validForm) {
 
         return res.status(400).json({ error: formError.join(' ') });
       }
 
-      // On vérifie que l'email n'est pas déjà utilisé:
+      // We check that the email is not already in use:
 
       const checkUser = await User.findOne({
         where: {
@@ -59,10 +57,10 @@ const authController = {
       });
 
       if (checkUser) {
-        return res.status(400).json({ message: 'Cet email est déjà utilisé.' });
+        return res.status(400).json({ message: 'This email is already in use.' });
       }
 
-      //On vérifie que le pseudo n'est pas déjà utilisé:
+      // We check that the pseudo is not already in use:
 
       const checkPseudo = await User.findOne({
         where: {
@@ -71,36 +69,36 @@ const authController = {
       });
 
       if (checkPseudo) {
-        return res.status(400).json({ message: 'Ce pseudo est déjà utilisé.' });
+        return res.status(400).json({ message: 'This pseudo is already in use.' });
       }
 
 
-      // Si tout le formulaire soumis est valide, on peut ajouter le nouvel utilisateur:
+      // If the submitted form is valid, we can add the new user:
 
-      // On hash le mot de passe:
-      const hashedPassword = await bcrypt.hash(password, 10);//
+      // We hash the password:
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       
-      // On crée le nouvel utilisateur:
-      const newUser = await User.create({ email, password: hashedPassword, pseudo, first_name, last_name, }); 
-//En SQL on aurait écrit INSERT INTO user (email, password, pseudo, first_name, last_name) VALUES (email, hashedPassword, pseudo, first_name, last_name);
+      // We create the new user:
+      const newUser = await User.create({ email, password: hashedPassword, pseudo, first_name, last_name, });
 
-      // On renvoie une réponse au client:
-      return res.statut(200).json({ message: 'Votre compte a bien été créé.' });
-s
+
+      // We send a response to the client:
+      return res.json({ message: 'Your account has been created successfully.' });
+
     } catch (error) {
       console.trace(error);
-      return res.status(500).json({ error: 'Erreur serveur.' });
+      return res.status(500).json({ error: 'Server error.' });
     }
   },
 
   login: async (req, res) => {
 
     try {
-      // On récupère les données du formulaire:
+      // We retrieve the form data:
       const { email, password } = req.body;
 
-      // On vérifie que l'email existe dans la base de données:
+      // We check if the email exists in the database:
       const user = await User.findOne({
         where: {
           email: email
@@ -108,15 +106,15 @@ s
       });
 
       if (!user) {
-        return res.status(400).json({ message: 'Utilisateur introuvable' });
+        return res.status(400).json({ message: 'User not found' });
       }
 
-      // On vérifie que le mot de passe est correct:
+      // We check if the password is correct:
       const validPassword = await bcrypt.compare(password, user.password);
 
       if (validPassword) {
 
-        //Génération du token:
+        // Generating the token:
         const token = jwt.sign(
           {
             user_id: user.id, email: user.email
@@ -127,68 +125,64 @@ s
 
         user.token = token
 
-        // On stocke l'utilisateur en session:
+        // We store the user in the session:
         req.session.user = user;
 
-      // On renvoie une réponse au client:
-        res.status(200).json({ user: user, token: token, message: 'Vous êtes connecté.' });
+        // We send a response to the client:
+        res.status(200).json({ user: user, token: token, message: 'You are now logged in.' });
 
       } else {
-        return res.status(400).json({ message: 'Mot de passe incorrect.' });
+        return res.status(400).json({ message: 'Incorrect password.' });
       }
 
 
     } catch (error) {
       console.trace(error);
-      return res.status(500).json({ error: 'Erreur serveur.' });
+      return res.status(500).json({ error: 'Server error.' });
     }
   },
 
   logout: async (req, res) => {
 
     try {
-      // On détruit la session:
+      // We destroy the session:
       req.session.destroy();
 
-      // On renvoie une réponse au client:
-      return res.json({ message: 'Vous êtes déconnecté.' });
+      // We send a response to the client:
+      return res.json({ message: 'You are now logged out.' });
 
     } catch (error) {
       console.trace(error);
-      return res.status(500).json({ error: 'Erreur serveur.' });
+      return res.status(500).json({ error: 'Server error.' });
     }
   },
 
   deleteAccount: async (req, res) => {
 
     try {
-      // On récupère l'id de l'utilisateur:
+      // We retrieve the user's id:
       const userId = req.body.userId;
 
-      // On vérifie que l'utilisateur existe dans la base de données:
-      //SELECT "id", "first_name", "last_name", "email", "password", "score", "quiz_done", "pseudo", "role_id", "created_at", "updated_at" FROM "user" AS "User" WHERE "User"."id" = 45;
+      // We check if the user exists in the database:
+      // SELECT "id", "first_name", "last_name", "email", "password", "score", "quiz_done", "pseudo", "role_id", "created_at", "updated_at" FROM "user" AS "User" WHERE "User"."id" = 45;
       const user = await User.findByPk(userId);
 
       if (!user) {
-        return res.status(400).json({ message: 'Utilisateur introuvable' });
+        return res.status(400).json({ message: 'User not found' });
       }
 
-      // On supprime l'utilisateur:
-      //DELETE FROM "user" WHERE "id" = useriD
+      // We delete the user:
+      // DELETE FROM "user" WHERE "id" = useriD
       await user.destroy();
 
-      // On renvoie une réponse au client:
-      return res.status(200).json({ message: 'Votre compte a bien été supprimé.' });
+      // We send a response to the client:
+      return res.status(200).json({ message: 'Your account has been successfully deleted.' });
 
     } catch (error) {
       console.trace(error);
-      return res.status(500).json({ error: 'Erreur serveur.' });
+      return res.status(500).json({ error: 'Server error.' });
     }
   },
-
-
-
-
 };
 
 module.exports = authController;

@@ -21,12 +21,11 @@ Utilisateur : visiteur connecté
 | 17  |  Visiteur   |    Accèder à une page listant l'ensemble des quiz     |        Avoir une vue d'ensemble des quiz        |                                                                        | 1      |
 | 18  |  Visiteur   |         Avoir accès à une barre de recherche          |  Pouvoir recherchez un quiz de manière précise  |                                                                        | 2      |
 
-**V2**
+## V2
 
 | ID  | En tant que |                                    Je souhaite                                    |                        Afin de                        |                    Commentaire                     | Sprint |
 | :-: | :---------: | :-------------------------------------------------------------------------------: | :---------------------------------------------------: | :------------------------------------------------: | ------ |
 | 19  | Utilisateur |                               Pouvoir créer un quiz                               |            Ajouter du contenu sur le site             |                                                    | 1      |
-|     |      1      |
 | 20  |    Admin    |                             Modérer les quiz proposés                             | Garantir des quiz correctes et sans contenu offensant |                                                    | 1      |
 | 21  |  Visiteur   |                        Sélectionner des réponses multiples                        |            Complexifier les quiz proposés             |                                                    | 1      |
 | 22  |  Visiteur   |                       Sélectionner des réponses avec images                       |             Diversifier les quiz proposés             |                                                    | 1      |

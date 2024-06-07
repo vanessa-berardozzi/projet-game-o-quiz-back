@@ -1,16 +1,6 @@
---
--- Base de données :  "quizotron"
---
+-- Deploy quizotron:initial-seeding to pg
 
 BEGIN;
-
-TRUNCATE "level" CASCADE;
-TRUNCATE "tag" CASCADE;
-TRUNCATE "quiz" CASCADE;
-TRUNCATE "question" CASCADE;
-TRUNCATE "answer" CASCADE;
-
-
 
 set client_encoding to 'utf-8';
 
@@ -1378,6 +1368,5 @@ INSERT INTO "answer" ("id", "description", "is_valid", "question_id") VALUES
 (1038, 'Jupiter', true, 260),
 (1039, 'Uranus', false, 260),
 (1040, 'Lune', false, 260);
-
 
 COMMIT;
