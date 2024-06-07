@@ -10,16 +10,17 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
+    "plugins": ["jsdoc"],
     "rules": {
-        "import/no-extraneous-dependencies": [
+    "import/no-extraneous-dependencies": [
     "error", {
-       "devDependencies": true, 
-       "optionalDependencies": true, 
-       "peerDependencies": true, 
+       "devDependencies": true,
+       "optionalDependencies": true,
+       "peerDependencies": true,
        "packageDir": "./"
     }
 ],
-     "linebreak-style": 0,   
-    },
+     "linebreak-style": 0
+    }
 
 }

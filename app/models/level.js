@@ -13,5 +13,5 @@ Level.init({
   tableName: 'level',
 });
 
-// Export du module Level
+// Export the model
 module.exports = Level;

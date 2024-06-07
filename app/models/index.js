@@ -6,92 +6,88 @@ const Tag = require('./tag');
 const User = require('./user');
 const Role = require('./role');
 
-// une question a plusieurs réponses
-
+// A question has multiple answers
 Question.hasMany(Answer, {
-
   as: 'answers',
   foreignKey: 'question_id',
 });
 
-// réciproque : une réponse est lié à une seule question
+// Reciprocal: an answer is linked to a single question
 Answer.belongsTo(Question, {
   as: 'question',
   foreignKey: 'question_id',
 });
 
-// un quiz a plusieurs questions
+// A quiz has multiple questions
 Quiz.hasMany(Question, {
   as: 'questions',
   foreignKey: 'quiz_id',
 });
 
-// réciproque : une question est lié à un seul quiz
+// Reciprocal: a question is linked to a single quiz
 Question.belongsTo(Quiz, {
   as: 'quiz',
   foreignKey: 'quiz_id',
 });
 
-// un quiz a un seul niveau
+// A quiz has a single level
 Quiz.belongsTo(Level, {
   as: 'level',
   foreignKey: 'level_id',
 });
 
-// un niveau a plusieurs quiz
+// A level can be linked to multiple quizzes
 Level.hasMany(Quiz, {
   foreignKey: 'level_id',
 });
 
-// un quiz a une seule catégorie
+// A quiz has a single tag
 Quiz.belongsTo(Tag, {
   as: 'tag',
   foreignKey: 'tag_id',
 });
 
-// Une catégorie peut-être liée à plusieurs quiz
+// A tag can be linked to multiple quizzes
 Tag.hasMany(Quiz, {
   as: 'quiz_list',
   foreignKey: 'tag_id',
 });
 
-// un user peut créer plusieurs quiz
+// A user can create multiple quizzes
 User.hasMany(Quiz, {
   as: 'user_quiz',
   foreignKey: 'user_id',
 });
 
-// un quiz est créé par un seul user
+// A quiz is created by a single user
 Quiz.belongsTo(User, {
   as: 'user',
   foreignKey: 'user_id',
 });
 
-// un user peut effectuer plusieurs quiz
-
+// A user can take multiple quizzes
 User.belongsToMany(Quiz, {
   as: 'quiz_played',
   through: 'play_quiz',
 });
 
-// un quiz peut être joué par plusieurs users
+// A quiz can be played by multiple users
 Quiz.belongsToMany(User, {
   as: 'players',
   through: 'play_quiz',
 });
 
-//un user peut avoir un role
+// A user can have a role
 User.belongsTo(Role, {
   as: 'role_user',
   foreignKey: 'role_id',
 });
 
-// un role peut être attribué à plusieurs users
+// A role can be assigned to multiple users
 Role.hasMany(User, {
   as: 'users_role',
   foreignKey: 'role_id',
 });
-
 
 module.exports = {
   Answer, Level, Question, Quiz, Tag, User, Role

@@ -1,6 +1,7 @@
-/* eslint-disable no-console */
 const { Sequelize } = require('sequelize');
 const { Quiz } = require('../models');
+
+/* eslint-disable no-console */
 
 const quizController = {
 
@@ -34,15 +35,14 @@ const quizController = {
       }
 
       return res.json(quiz);
-    } catch (error) { // en cas de problème
+    } catch (error) { // in case of an error
       console.trace(error);
-      // On retourne un code erreur 500 et un message expliquant le problème
+      // Return a 500 error code and a message explaining the problem
       return res.status(500).json({ error: 'Unexpected server error. Please try again later.' });
     }
   },
 
-//Retourne les quiz les plus populaires, pour le moment en random
-
+  // Returns the most popular quizzes, currently in random order
   getPopularQuiz: async (req, res) => {
     try {
       const quiz = await Quiz.findAll(
