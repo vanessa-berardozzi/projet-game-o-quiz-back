@@ -7,9 +7,9 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Game-O-Quiz API',
+      title: 'Quiz\'O\'Tron API',
       version: '1.0.0',
-      description: 'API for Game-O-Quiz project',
+      description: 'A simple Express Quiz API',
     },
     servers: [
       {
@@ -17,11 +17,10 @@ const options = {
       },
     ],
   },
-  apis: ['./app/routers/router.js'],
+  apis: ['./app/controllers/*.js'],
 };
 
-const specs = swaggerJsDoc(options);
+const swaggerSpecs = swaggerJsDoc(options);
 
-module.exports = (app) => {
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
-};
+module.exports = { swaggerSpecs };
+
